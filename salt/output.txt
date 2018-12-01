@@ -1,0 +1,150 @@
+ubuntu:
+----------
+          ID: install_webserver_packages
+    Function: pkg.installed
+      Result: True
+     Comment: 5 targeted packages were installed/updated.
+              The following packages were already installed: php, libapache2-mod-php
+     Started: 22:59:54.684868
+    Duration: 19512.77 ms
+     Changes:   
+              ----------
+              apache2:
+                  ----------
+                  new:
+                      2.4.29-1ubuntu4.5
+                  old:
+              firewalld:
+                  ----------
+                  new:
+                      0.4.4.6-1
+                  old:
+              httpd:
+                  ----------
+                  new:
+                      1
+                  old:
+              httpd-cgi:
+                  ----------
+                  new:
+                      1
+                  old:
+              mysql-client:
+                  ----------
+                  new:
+                      5.7.24-0ubuntu0.18.04.1
+                  old:
+              mysql-server:
+                  ----------
+                  new:
+                      5.7.24-0ubuntu0.18.04.1
+                  old:
+              php-mysql:
+                  ----------
+                  new:
+                      1:7.2+60ubuntu1
+                  old:
+----------
+          ID: /var/www/html/index.html
+    Function: file.managed
+      Result: True
+     Comment: File /var/www/html/index.html is in the correct state
+     Started: 23:00:14.210582
+    Duration: 75.71 ms
+     Changes:   
+----------
+          ID: /var/www/html/mysql.php
+    Function: file.managed
+      Result: True
+     Comment: File /var/www/html/mysql.php updated
+     Started: 23:00:14.286631
+    Duration: 38.353 ms
+     Changes:   
+              ----------
+              diff:
+                  New file
+              mode:
+                  0644
+----------
+          ID: /var/www/html/contact.html
+    Function: file.managed
+      Result: True
+     Comment: File /var/www/html/contact.html updated
+     Started: 23:00:14.325342
+    Duration: 32.689 ms
+     Changes:   
+              ----------
+              diff:
+                  New file
+              mode:
+                  0644
+----------
+          ID: /etc/apache2/apache2.conf
+    Function: file.managed
+      Result: True
+     Comment: File /etc/apache2/apache2.conf is in the correct state
+     Started: 23:00:14.358403
+    Duration: 40.357 ms
+     Changes:   
+----------
+          ID: apache2
+    Function: service.running
+      Result: True
+     Comment: The service apache2 is already running
+     Started: 23:00:15.211286
+    Duration: 54.719 ms
+     Changes:   
+----------
+          ID: mysql
+    Function: service.running
+      Result: True
+     Comment: The service mysql is already running
+     Started: 23:00:15.266485
+    Duration: 57.362 ms
+     Changes:   
+----------
+          ID: firewalld
+    Function: service.running
+      Result: True
+     Comment: The service firewalld is already running
+     Started: 23:00:15.324121
+    Duration: 58.14 ms
+     Changes:   
+----------
+          ID: sudo iptables -A INPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+    Function: cmd.run
+      Result: True
+     Comment: Command "sudo iptables -A INPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT" run
+     Started: 23:00:15.383857
+    Duration: 28.694 ms
+     Changes:   
+              ----------
+              pid:
+                  88231
+              retcode:
+                  0
+              stderr:
+              stdout:
+----------
+          ID: sudo iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+    Function: cmd.run
+      Result: True
+     Comment: Command "sudo iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate ESTABLISHED -j ACCEPT" run
+     Started: 23:00:15.413178
+    Duration: 24.026 ms
+     Changes:   
+              ----------
+              pid:
+                  88236
+              retcode:
+                  0
+              stderr:
+              stdout:
+
+Summary for ubuntu
+-------------
+Succeeded: 10 (changed=5)
+Failed:     0
+-------------
+Total states run:     10
+Total run time:   19.923 s

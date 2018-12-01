@@ -1,0 +1,10 @@
+my_app:
+  docker_image.present:
+    - force: true
+    - name: my_apache2:latest
+
+my_app1:
+  docker_container.running:
+    - name: my_app
+    - image: srv/salt/my_apache2:latest
+    - port_bindings: 80:80
